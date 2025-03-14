@@ -93,7 +93,6 @@ services:
   swarm_node:
     image: europe-docker.pkg.dev/gensyn-public-b7d9/public/rl-swarm:v0.0.1
     command: ./run_hivemind_docker.sh
-    runtime: nvidia  # Enables GPU support; remove if no GPU is available
     environment:
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
       - PEER_MULTI_ADDRS=/ip4/38.101.215.13/tcp/30002/p2p/QmQ2gEXoPJg6iMBSUFWGzAabS2VhnzuS782Y637hGjfsRJ
@@ -121,7 +120,6 @@ services:
       interval: 30s
       retries: 3
 ```
-* **GPU/CPU Note**: If you don't have an NVIDIA GPU or the NVIDIA Container Runtime, remove the `runtime: nvidia` line under `swarm_node` to run on **CPU**.
 
 ### What Each Service Does:
 * **otel-collector**: Gathers telemetry data (metrics, traces).
@@ -178,7 +176,7 @@ docker-compose logs -f otel-collector
 
   2- Search for this ID in the dashboard data to see your node’s contributions.
 
-* **Note**: The dashboard monitors all peers together. The node ID in the logs is likely your identifier but I am keep experimenting to find out more about the node metrics!
+* **Note**: Not incentivized.. just trying before announcment...
 
 
 
